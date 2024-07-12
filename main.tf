@@ -1,11 +1,11 @@
 terraform {
 required_version = ">= 1.2.0"
 cloud {
-      organization = "ADL-Test-eval"
+      organization = "Hackathon2024"
       
       workspaces {
-      name = "TF-AWS-Azure-Packer"
-      project = "Demo_Project"
+      name = "Hackathon2024"
+      project = "Default Project"
     }
     }
 required_providers {
