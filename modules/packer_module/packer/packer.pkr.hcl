@@ -46,13 +46,13 @@ source "amazon-ebs" "aws_ami" {
   region       = "us-east-1"
   source_ami   = "${var.base_ami}"
   ssh_username = "ec2-user"
-  subnet_id    = "subnet-0142911cfca33a1a1"
+  subnet_id    = "subnet-0adc620a49bfde3f3"
   tags = {
     BuiltBy   = "Packer"
     CreatedBy = "${var.triggered_user}"
     Name      = "${var.aminame}"
   }
-  vpc_id = "vpc-0bf4d1f35045c39a0"
+  vpc_id = "vpc-052e92c38d2f0b259"
 }
 
 
