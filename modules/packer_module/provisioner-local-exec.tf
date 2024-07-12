@@ -2,7 +2,7 @@
 resource "terraform_data" "packer_template" {
 
 provisioner "local-exec" {
-command = "mkdir -p /opt/packer"
+command = "sudo mkdir -p /opt/packer"
 }
 provisioner "local-exec" {
 working_dir = "/opt/packer/"
@@ -12,14 +12,14 @@ provisioner "local-exec" {
 command = "ls -al /opt/packer"
 }
 provisioner "local-exec" {
-command = "apt-get install -y unzip"
+command = "sudo apt install -y unzip"
 }
 provisioner "local-exec" {
 working_dir = "/opt/packer/"
 command = "unzip -o packer_1.11.0_linux_amd64.zip"
 }
 provisioner "local-exec" {
-command = "/opt/packer/packer plugins install github.com/hashicorp/amazon"
+command = "sudo /opt/packer/packer plugins install github.com/hashicorp/amazon"
 }
 provisioner "local-exec" {
    
