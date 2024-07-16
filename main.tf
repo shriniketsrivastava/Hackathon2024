@@ -31,4 +31,8 @@ module "aws_image" {
   triggered_user = var.triggered_user
 
 }
+data "local_file" "image_version" {
+  filename = "${path.module}/.image_version"
+  depends_on = [ terraform_data.packer_template ]
+}
 
