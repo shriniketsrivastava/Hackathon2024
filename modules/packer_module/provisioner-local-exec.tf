@@ -30,6 +30,6 @@ provisioner "local-exec" {
 
 }
 data "local_file" "image_version" {
-  filename = "${path.module}/.image_version"
+  filename = fileexists("${path.module}/.image_version") ? "${path.module}/.image_version" : null
   depends_on = [ terraform_data.packer_template ]
 }
