@@ -7,7 +7,7 @@ cloud {
      organization = "Hackathon2024"
       
       workspaces {
-      name = "Hackathon2024"
+      name = "TF-Hackathon"
       project = "Default Project"
     }
     }
