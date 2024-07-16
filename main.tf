@@ -1,16 +1,16 @@
 terraform {
 required_version = ">= 1.2.0"
-backend "local" {
-    path = "terraform.tfstate"
-  }
-//cloud {
-    //  organization = "Hackathon2024"
+//backend "local" {
+  //  path = "terraform.tfstate"
+ // }
+cloud {
+     organization = "Hackathon2024"
       
-     // workspaces {
-     // name = "Hackathon2024"
-     // project = "Default Project"
-    //}
-   // }
+      workspaces {
+      name = "Hackathon2024"
+      project = "Default Project"
+    }
+    }
 required_providers {
     aws = {
       source  = "hashicorp/aws"
