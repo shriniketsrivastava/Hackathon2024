@@ -72,6 +72,6 @@ build {
       "jq -r '.builds[-1].artifact_id' .manifest.json > .image_version"
     ]
 
-
+}
 
 }
