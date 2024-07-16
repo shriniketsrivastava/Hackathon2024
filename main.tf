@@ -23,13 +23,5 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "aws_image" {
-  source = "./modules/packer_module"
-
-  aminame = var.aminame
-  base_ami = var.base_ami 
-  triggered_user = var.triggered_user
-
-}
 
 
