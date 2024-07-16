@@ -67,6 +67,10 @@ build {
     output = ".manifest.json"
     strip_path = true
   }
+  post-processor "shell-local" { 
+    inline = [
+      "jq -r '.builds[-1].artifact_id' .manifest.json > .image_version"
+    ]
 
 
 
