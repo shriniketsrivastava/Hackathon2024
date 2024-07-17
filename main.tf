@@ -25,7 +25,7 @@ provider "aws" {
 
 data "aws_ami" "ami" {
   most_recent = true
-  owners = ["self"]
+  owners = ["980377841215"]
   filter {
     name = "name"
     values = [var.aminame]
