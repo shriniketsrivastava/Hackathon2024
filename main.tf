@@ -21,7 +21,7 @@ required_providers {
 
 provider "azurerm" {
   #profile = "LSCInfraAWSAdmin-194884354514"
-  region = "us-east-1"
+  
   features {}
 }
 
