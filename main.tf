@@ -12,7 +12,7 @@ cloud {
     }
     }
 required_providers {
-    aws = {
+    azure = {
       source  = "hashicorp/azurerm"
       version = "~> 3.0.0"
     }
@@ -22,6 +22,7 @@ required_providers {
 provider "azurerm" {
   #profile = "LSCInfraAWSAdmin-194884354514"
   region = "us-east-1"
+  features {}
 }
 
 module "azure_image" {
@@ -48,7 +49,7 @@ resource "random_string" "fqdn" {
   numeric = false
 }
 
-resource "azurerm_virtual_network" "hack" {
+resource "azurerm_virtual_network" "vn" {
   name                = "hack-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = var.location
@@ -56,10 +57,10 @@ resource "azurerm_virtual_network" "hack" {
   tags                = local.tags
 }
 
-resource "azurerm_subnet" "hack" {
+resource "azurerm_subnet" "sn" {
   name                 = "hack-subnet"
   resource_group_name  = local.resource_group_name
-  virtual_network_name = azurerm_virtual_network.hack.name
+  virtual_network_name = azurerm_virtual_network.vn.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
@@ -69,7 +70,7 @@ resource "azurerm_network_interface" "hack" {
   resource_group_name = local.resource_group_name
   ip_configuration {
     name                          = "hackconfig"
-    subnet_id                     = azurerm_subnet.hack.id
+    subnet_id                     = azurerm_subnet.sn.id
     private_ip_address_allocation = "Dynamic"
   }
   tags                = local.tags
