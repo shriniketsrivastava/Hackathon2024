@@ -25,22 +25,6 @@ provider "azurerm" {
   features {}
 }
 
-module "azure_image" {
-  source = "./modules/packer_module"
-
-  client_id = var.client_id
-  client_secret = var.client_secret 
-  subscription_id = var.subscription_id
-  tenant_id = var.tenant_id
-  image_sku = var.image_sku
-  image_offer = var.image_offer
-  image_publisher = var.image_publisher
-  managed_image_name = var.managed_image_name
-  vm_size = var.vm_size
-  os_type = var.os_type
-  
-}
-
 
 resource "random_string" "fqdn" {
   length  = 6
