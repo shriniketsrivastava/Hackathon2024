@@ -12,7 +12,7 @@ cloud {
     }
     }
 required_providers {
-    azure = {
+    azurerm = {
       source  = "hashicorp/azurerm"
       version = "~> 3.0.0"
     }
