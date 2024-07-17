@@ -38,6 +38,7 @@ resource "aws_instance" "mytest" {
   tags = {
     Name = "Hackathon"
   }
+depends_on = [ module.aws_image.image_name ]
 }
 
 
