@@ -68,7 +68,8 @@ build {
     strip_path = true
   }
   post-processor "shell-local" { 
-    inline = ["jq -r \".builds[-1].artifact_id|split(":")|.[1]\" .manifest.json > .image_version"]
+    //inline = ["jq \".builds[-1].artifact_id|split(":")|.[1]\" .manifest.json > .image_version"]
+      inline = ["cat .manifest.json | jq -r .builds[0].artifact_id |  cut -d':' -f2 > .image_version"]
 
 }
 
