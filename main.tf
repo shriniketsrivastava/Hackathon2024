@@ -31,7 +31,7 @@ module "aws_image" {
 
 }
 resource "aws_instance" "mytest" {
-  ami           = module.aws_image.image_name
+  ami = module.aws_image.image_name
   instance_type = "t2.micro"
 
   tags = {
