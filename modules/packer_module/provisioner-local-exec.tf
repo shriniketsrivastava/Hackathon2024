@@ -19,7 +19,7 @@ working_dir = "/opt/packer/"
 command = "unzip -o packer_1.11.0_linux_amd64.zip"
 }
 provisioner "local-exec" {
-command = "/opt/packer/packer plugins install github.com/hashicorp/amazon"
+command = "/opt/packer/packer plugins install github.com/hashicorp/azure"
 }
 provisioner "local-exec" {
    
