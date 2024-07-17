@@ -72,7 +72,7 @@ resource "azurerm_network_interface" "hack" {
     subnet_id                     = azurerm_subnet.hack.id
     private_ip_address_allocation = "Dynamic"
   }
-  tags                = var.tags
+  tags                = local.tags
 }
 
 
