@@ -83,7 +83,7 @@ resource "azurerm_virtual_machine" "test" {
   storage_os_disk {
     name          = "hacker-vm-osdisk"
     create_option = "FromImage"
-    disk_size_gb  = "30"
+    
   }
 
   os_profile {
