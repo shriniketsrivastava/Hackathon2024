@@ -92,4 +92,7 @@ resource "azurerm_virtual_machine" "test" {
     admin_password = "Sc@nscope123"
   }
 
+   os_profile_windows_config {
+    enable_automatic_upgrades = true
+  }
 }
