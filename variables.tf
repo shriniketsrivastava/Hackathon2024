@@ -48,4 +48,8 @@ variable "os_type" {
   default = ""
 }
 
+variable "location" {
+  type    = string
+  default = ""
+}
 
