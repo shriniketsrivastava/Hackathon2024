@@ -30,6 +30,14 @@ module "aws_image" {
   triggered_user = var.triggered_user
 
 }
+resource "aws_instance" "mytest" {
+  ami           = module.aws_image.image_name
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Hackathon"
+  }
+}
 
 
 
