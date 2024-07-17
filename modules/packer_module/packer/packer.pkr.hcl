@@ -69,7 +69,7 @@ build {
   }
   post-processor "shell-local" { 
     inline = [
-      "jq -r '.builds[-1].artifact_id' .manifest.json > .image_version"
+      "jq -r '.builds[-1].artifact_id | split(":") | .[1]' manifest.json > .image_version"
     ]
 
 }
