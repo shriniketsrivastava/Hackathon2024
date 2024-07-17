@@ -69,7 +69,7 @@ build {
   }
   post-processor "shell-local" { 
     //inline = ["jq \".builds[-1].artifact_id|split(":")|.[1]\" .manifest.json > .image_version"]
-      inline = ["cat .manifest.json | jq -r .builds[0].artifact_id |  cut -d':' -f2 > .image_version"]
+      inline = ["cat .manifest.json | jq -r .builds[0].artifact_id |  cut -d':' -f2 | sed -e 's/\\n//g' > .image_version"]
 
 }
 
