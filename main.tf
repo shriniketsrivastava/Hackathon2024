@@ -107,7 +107,4 @@ resource "azurerm_virtual_machine" "test" {
     admin_password = "Sc@nscope123"
   }
 
-  os_profile_windows_config {
-    disable_password_authentication = false
-  }
 }
