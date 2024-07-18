@@ -22,7 +22,15 @@ provider "aws" {
   #profile = "LSCInfraAWSAdmin-194884354514"
   region = "us-east-1"
 }
+data "aws_ami" "ami" {
+  most_recent = true
+  owners = ["980377841215"]
+  filter {
+    name = "name"
+    values = [var.aminame]
+  }
 
+}
 
 resource "aws_instance" "mytest" {
   ami = data.aws_ami.ami.id
