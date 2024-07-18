@@ -46,3 +46,6 @@ resource "aws_instance" "mytest" {
   }
 
 }
+output "private_ip_address" {
+value = aws_instance.mytest.private_ip
+}
