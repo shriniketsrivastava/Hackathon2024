@@ -30,6 +30,10 @@ module "aws_image" {
   triggered_user = var.triggered_user
 
 }
+output "image_name" {
+  value = data.local_file.image_version.content
+ depends_on = [module.aws_image]
+}
 
 
 
