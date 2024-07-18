@@ -1,5 +1,6 @@
 
 resource "terraform_data" "packer_template" {
+triggers_replace = [local.packer_contents_hash]
 
 provisioner "local-exec" {
 command = "mkdir -p /opt/packer"
@@ -22,15 +23,12 @@ provisioner "local-exec" {
 command = "/opt/packer/packer plugins install github.com/hashicorp/amazon"
 }
 provisioner "local-exec" {
-   
+    when = create 
     working_dir = "${path.module}/packer/"
     command     = "/opt/packer/packer build -var aminame=${var.aminame} -var base_ami=${var.base_ami} -var triggered_user=${var.triggered_user} packer.pkr.hcl"
   }
  
 
 }
-data "local_file" "image_version" {
-  filename = "${path.module}/packer/.image_version"
-  depends_on = [ terraform_data.packer_template ]
-}
+
 

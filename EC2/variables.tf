@@ -1,0 +1,4 @@
+variable "aminame" {
+  type    = string
+  
+}

@@ -22,25 +22,27 @@ provider "aws" {
   #profile = "LSCInfraAWSAdmin-194884354514"
   region = "us-east-1"
 }
-module "aws_image" {
-  source = "./modules/packer_module"
 
-  aminame = var.aminame
-  base_ami = var.base_ami 
-  triggered_user = var.triggered_user
-
+data "aws_ami" "ami" {
+  most_recent = true
+  owners = ["099720109477"]
+  filter {
+    name = "name"
+    values = [var.aminame]
+  }
 }
+
+output "ami_id" {
+  value = data.aws_ami.ami.id
+}
+
 resource "aws_instance" "mytest" {
-  ami = module.aws_image.image_name
+  ami = data.aws_ami.ami.id
   //ami = "ami-0ab23052532f168a5"
   instance_type = "t2.micro"
 
   tags = {
     Name = "Hackathon"
   }
-depends_on = [ module.aws_image.image_name ]
+
 }
-
-
-
-

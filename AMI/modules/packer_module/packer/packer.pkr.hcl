@@ -33,7 +33,7 @@ source "amazon-ebs" "aws_ami" {
     volume_type           = "gp2"
   }
   ami_description = "AWS golden image built by packer"
-  ami_name        = "${var.aminame}"
+  ami_name        = "${var.aminame}--{{timestamp}}"
   instance_type   = "t3a.xlarge"
   launch_block_device_mappings {
     delete_on_termination = "true"
