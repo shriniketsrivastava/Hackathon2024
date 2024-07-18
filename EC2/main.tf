@@ -42,7 +42,7 @@ resource "aws_instance" "mytest" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "Hackathon"
+    Name = var.ec2name
   }
 
 }
