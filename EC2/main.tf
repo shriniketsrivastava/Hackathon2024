@@ -23,18 +23,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-data "aws_ami" "ami" {
-  most_recent = true
-  owners = ["980377841215"]
-  filter {
-    name = "name"
-    values = [var.aminame]
-  }
-}
-
-output "ami_id" {
-  value = data.aws_ami.ami.id
-}
 
 resource "aws_instance" "mytest" {
   ami = data.aws_ami.ami.id
@@ -46,6 +34,8 @@ resource "aws_instance" "mytest" {
   }
 
 }
+
 output "private_ip_address" {
 value = aws_instance.mytest.private_ip
+depends_on = [aws_instance.mytest]
 }
