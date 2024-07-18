@@ -20,8 +20,7 @@ required_providers {
 }
 
 provider "azurerm" {
-  #profile = "LSCInfraAWSAdmin-194884354514"
-  
+    
   features {}
 }
 
@@ -31,6 +30,15 @@ resource "random_string" "fqdn" {
   special = false
   upper   = false
   numeric = false
+}
+
+resource "azurerm_public_ip" "pubip" {
+  name                = "hackPublicIp"
+  resource_group_name = local.resource_group_name
+  location            = var.location
+  allocation_method   = "Static"
+
+  tags                = local.tags
 }
 
 resource "azurerm_virtual_network" "vn" {
@@ -56,6 +64,7 @@ resource "azurerm_network_interface" "hack" {
     name                          = "hackconfig"
     subnet_id                     = azurerm_subnet.sn.id
     private_ip_address_allocation = "Dynamic"
+	public_ip_address_id 		  =	azurerm_public_ip.pubip.id
   }
   tags                = local.tags
 }
@@ -95,4 +104,14 @@ resource "azurerm_virtual_machine" "test" {
    os_profile_windows_config {
     enable_automatic_upgrades = true
   }
+}
+
+data "azurerm_public_ip" "pubip" {
+name = azurerm_public_ip.pubip.name
+resource_group_name = local.resource_group_name
+depends_on = [azurerm_virtual_machine.test]
+}
+
+output "public_ip_address" {
+value = data.azurerm_public_ip.pubip.ip_address
 }

@@ -20,8 +20,7 @@ required_providers {
 }
 
 provider "azurerm" {
-  #profile = "LSCInfraAWSAdmin-194884354514"
-  
+    
   features {}
 }
 
