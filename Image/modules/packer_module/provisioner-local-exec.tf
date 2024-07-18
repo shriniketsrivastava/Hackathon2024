@@ -1,7 +1,7 @@
 
 resource "terraform_data" "packer_template" {
 
-triggers_replace = [local.packer_contents_hash]
+triggers_replace = [local.packer_contents_hash, local.image_target_build_params]
   
 provisioner "local-exec" {
 command = "mkdir -p /opt/packer"
