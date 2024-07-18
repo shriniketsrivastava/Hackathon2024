@@ -31,7 +31,7 @@ module "aws_image" {
 
 }
 data "local_file" "image_version" {
-  filename = "${path.module}/packer/.image_version"
+  filename = "./modules/packer_module/packer/.image_version"
   depends_on = [ module.aws_image ]
 }
 output "image_name" {
