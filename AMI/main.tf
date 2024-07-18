@@ -30,9 +30,13 @@ module "aws_image" {
   triggered_user = var.triggered_user
 
 }
+data "local_file" "image_version" {
+  filename = "${path.module}/packer/.image_version"
+  depends_on = [ module.aws_image ]
+}
 output "image_name" {
   value = data.local_file.image_version.content
- depends_on = [module.aws_image]
+ depends_on = [ module.aws_image ]
 }
 
 
